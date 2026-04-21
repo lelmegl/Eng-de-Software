@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Fácil — Serviços Domésticos de Confiança</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#1A3C6E;--azul-medio:#2456A4;--azul-claro:#3B72C8;--azul-pale:#EBF2FF;--laranja:#F5620A;--laranja-h:#D94E00;--cinza-bg:#F4F6FA;--cinza-borda:#E0E6F0;--cinza-text:#6B7A99;--texto:#0F1E3C;--branco:#FFFFFF;--sucesso:#1A8754;--sucesso-pale:#EDFCF2;--sombra-azul:0 8px 32px rgba(26,60,110,0.14);--sombra-leve:0 2px 12px rgba(0,0,0,0.07)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--cinza-bg);color:var(--texto);line-height:1.6;overflow-x:hidden}
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+.btn-laranja{display:inline-flex;align-items:center;gap:8px;background:var(--laranja);color:#fff;padding:13px 26px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;border:none;cursor:pointer;transition:all .2s;text-decoration:none}
+.btn-laranja:hover{background:var(--laranja-h);transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,98,10,.35)}
+.btn-azul{display:inline-flex;align-items:center;gap:8px;background:var(--azul);color:#fff;padding:12px 24px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;border:none;cursor:pointer;transition:all .2s}
+.btn-azul:hover{background:var(--azul-medio);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--azul);padding:11px 22px;border-radius:10px;font-family:'Syne',sans-serif;font-weight:600;font-size:14px;border:2px solid var(--azul);cursor:pointer;transition:all .2s}
+.btn-outline:hover{background:var(--azul-pale)}
+.section-tag{display:inline-block;background:var(--azul-pale);color:var(--azul-medio);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:12px}
+.section-title{font-family:'Syne',sans-serif;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;color:var(--texto);line-height:1.2;margin-bottom:10px}
+.section-sub{font-size:15px;color:var(--cinza-text);line-height:1.7;max-width:560px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--cinza-borda)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1120px;margin:0 auto}
+.logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--azul);display:flex;align-items:center;gap:8px;text-decoration:none}
+.logo-icon{background:var(--laranja);border-radius:8px;padding:5px;display:flex}
+.nav-links{display:flex;gap:28px}
+.nav-links a{text-decoration:none;color:var(--cinza-text);font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--azul)}
+.nav-cta{display:flex;gap:10px;align-items:center}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* HERO */
+#hero{background:linear-gradient(135deg,var(--azul) 0%,#0d2756 60%,#1a3c6e 100%);position:relative;overflow:hidden;padding:80px 20px 90px}
+#hero::before{content:'';position:absolute;top:-100px;right:-100px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(59,114,200,.25) 0%,transparent 70%);pointer-events:none}
+.hero-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:768px){.hero-inner{grid-template-columns:1fr}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,98,10,.15);border:1px solid rgba(245,98,10,.3);color:#ffb38a;padding:6px 16px;border-radius:100px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+.hero-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:800;color:#fff;line-height:1.15;margin-bottom:16px}
+.hero-title span{color:#FF8C50}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.72);line-height:1.75;margin-bottom:32px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.hero-trust{display:flex;gap:24px;margin-top:36px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.65);font-size:13px}
+.hero-card{background:#fff;border-radius:20px;padding:28px;box-shadow:0 24px 64px rgba(0,0,0,.22)}
+.hero-card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--texto);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.mini-cat-item{display:flex;align-items:center;gap:12px;background:var(--cinza-bg);border-radius:10px;padding:10px 14px;font-size:13px;font-weight:500;color:var(--texto);transition:all .2s;cursor:pointer;margin-bottom:8px}
+.mini-cat-item:hover{background:var(--azul-pale)}
+.mini-cat-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+.hero-rating{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--cinza-borda)}
+
+/* STATS */
+#stats{padding:52px 20px;background:#fff}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:600px){.stats-grid{grid-template-columns:1fr 1fr}}
+.stat-item{text-align:center;padding:20px 16px}
+.stat-num{font-family:'Syne',sans-serif;font-size:2.4rem;font-weight:800;color:var(--azul);line-height:1}
+.stat-label{font-size:13px;color:var(--cinza-text);margin-top:6px}
+
+/* BUSCA */
+#buscar{padding:72px 20px;background:var(--cinza-bg)}
+.busca-header{text-align:center;margin-bottom:40px}
+.busca-bar{background:#fff;border-radius:16px;padding:20px 24px;border:1px solid var(--cinza-borda);box-shadow:var(--sombra-leve);margin-bottom:28px}
+.busca-row{display:grid;grid-template-columns:1fr 1fr auto auto;gap:12px;align-items:end}
+@media(max-width:640px){.busca-row{grid-template-columns:1fr}}
+.busca-field label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza-text);display:block;margin-bottom:6px}
+.busca-input{width:100%;background:var(--cinza-bg);border:1.5px solid var(--cinza-borda);border-radius:10px;padding:11px 14px;font-family:'Manrope',sans-serif;font-size:14px;color:var(--texto);outline:none;transition:all .2s}
+.busca-input:focus{border-color:var(--azul-claro);background:#fff;box-shadow:0 0 0 3px rgba(59,114,200,.1)}
+.busca-btn{background:var(--laranja);color:#fff;border:none;border-radius:10px;padding:12px 22px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:8px;white-space:nowrap;transition:all .2s;height:44px}
+.busca-btn:hover{background:var(--laranja-h)}
+.btn-loc{background:var(--azul-pale);color:var(--azul);border:1.5px solid var(--azul-claro);border-radius:10px;padding:0 16px;font-family:'Syne',sans-serif;font-weight:600;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:all .2s;height:44px}
+.btn-loc.ativo{background:var(--azul);color:#fff;border-color:var(--azul)}
+.filtros-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;align-items:center}
+.filtro-label{font-size:12px;font-weight:700;color:var(--cinza-text);margin-right:4px}
+.chip{border:1.5px solid var(--cinza-borda);background:var(--cinza-bg);color:var(--cinza-text);padding:6px 14px;border-radius:100px;font-size:12.5px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;font-family:'Manrope',sans-serif}
+.chip:hover{border-color:var(--azul-claro);color:var(--azul)}
+.chip.ativo{background:var(--azul);color:#fff;border-color:var(--azul)}
+.busca-status{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+.busca-status-txt{font-size:13.5px;color:var(--cinza-text)}
+.busca-status-txt strong{color:var(--texto)}
+.geo-pill{display:none;align-items:center;gap:6px;background:var(--sucesso-pale);color:var(--sucesso);font-size:12px;font-weight:600;padding:5px 12px;border-radius:100px}
+.geo-pill.show{display:flex}
+
+/* CARD PROFISSIONAL */
+.prof-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.prof-card{background:#fff;border-radius:18px;border:1.5px solid var(--cinza-borda);overflow:hidden;transition:all .28s;cursor:pointer}
+.prof-card:hover{border-color:var(--azul-claro);transform:translateY(-4px);box-shadow:var(--sombra-azul)}
+.prof-card-top{padding:20px 20px 14px;display:flex;gap:14px;align-items:flex-start}
+.prof-avatar{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#fff;flex-shrink:0;position:relative}
+.online-badge{position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#4ADE80;border:2px solid #fff}
+.prof-info{flex:1;min-width:0}
+.verified-tag{display:inline-flex;align-items:center;gap:4px;background:#EDFCF2;color:var(--sucesso);font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:4px;margin-bottom:4px}
+.prof-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--texto);margin-bottom:2px}
+.prof-cat{font-size:12px;color:var(--cinza-text);margin-bottom:6px}
+.prof-rating-row{display:flex;align-items:center;gap:6px}
+.prof-stars{color:#F59E0B;font-size:13px}
+.prof-rating-num{font-size:12.5px;font-weight:700;color:var(--texto)}
+.prof-reviews{font-size:11.5px;color:var(--cinza-text)}
+.prof-dist-badge{background:var(--azul-pale);color:var(--azul);font-size:11px;font-weight:700;padding:5px 10px;border-radius:100px;white-space:nowrap;flex-shrink:0;align-self:flex-start}
+.prof-card-mid{padding:0 20px 14px}
+.prof-tags{display:flex;gap:6px;flex-wrap:wrap}
+.prof-tag{background:var(--cinza-bg);color:var(--cinza-text);font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px}
+.prof-card-foot{display:flex;align-items:center;justify-content:space-between;padding:12px 20px;border-top:1px solid var(--cinza-borda);background:var(--cinza-bg)}
+.prof-price{font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:var(--azul)}
+.prof-price-lbl{font-size:11px;color:var(--cinza-text)}
+.prof-card-btn{background:var(--laranja);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;cursor:pointer;transition:all .2s}
+.prof-card-btn:hover{background:var(--laranja-h)}
+/* skeleton */
+.skeleton{background:linear-gradient(90deg,#e8ecf0 25%,#f4f6fa 50%,#e8ecf0 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-card{background:#fff;border-radius:18px;border:1.5px solid var(--cinza-borda);padding:20px;display:flex;flex-direction:column;gap:12px}
+.skel-line{height:13px;border-radius:6px}
+.skel-circle{width:56px;height:56px;border-radius:50%;flex-shrink:0}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,20,50,.65);backdrop-filter:blur(6px);z-index:500;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+@media(min-width:640px){.modal-overlay{align-items:center}}
+.modal-box{background:#fff;width:100%;max-width:700px;max-height:92vh;border-radius:24px 24px 0 0;overflow-y:auto;transform:translateY(60px);transition:transform .35s cubic-bezier(.34,1.2,.64,1);position:relative}
+@media(min-width:640px){.modal-box{border-radius:24px;transform:scale(.95)}}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+@media(min-width:640px){.modal-overlay.open .modal-box{transform:scale(1)}}
+.modal-topbar{display:flex;justify-content:flex-end;padding:14px 18px 0;position:sticky;top:0;background:#fff;z-index:10}
+.modal-close-btn{background:var(--cinza-bg);border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--cinza-text);font-size:18px;transition:all .2s;font-family:'Syne',sans-serif;font-weight:700}
+.modal-close-btn:hover{background:var(--cinza-borda);color:var(--texto)}
+.modal-body{padding:0 24px 24px}
+.modal-hdr{display:flex;gap:18px;align-items:flex-start;margin-bottom:20px}
+.modal-avatar{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:28px;color:#fff;flex-shrink:0;position:relative}
+.modal-online{position:absolute;bottom:4px;right:4px;width:16px;height:16px;border-radius:50%;background:#4ADE80;border:2.5px solid #fff}
+.modal-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--texto);line-height:1.2}
+.modal-sub{font-size:13.5px;color:var(--cinza-text);margin-top:4px}
+.modal-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.modal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+.mstat{background:var(--cinza-bg);border-radius:12px;padding:14px;text-align:center}
+.mstat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--azul)}
+.mstat-lbl{font-size:11.5px;color:var(--cinza-text);margin-top:2px}
+.msec-title{font-family:'Syne',sans-serif;font-weight:700;font-size:14px;color:var(--texto);margin-bottom:12px}
+.dist-box{background:var(--azul-pale);border-radius:10px;padding:12px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--azul-medio)}
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+.port-item{aspect-ratio:1;border-radius:10px;overflow:hidden;position:relative}
+.port-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:rgba(255,255,255,.7);font-size:11px;font-weight:600}
+.port-lbl{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);color:#fff;font-size:10px;font-weight:600;padding:10px 8px 6px}
+.rev-item{background:var(--cinza-bg);border-radius:12px;padding:14px;margin-bottom:10px}
+.rev-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.rev-user{display:flex;align-items:center;gap:10px}
+.rev-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:#fff;flex-shrink:0}
+.rev-name{font-size:13.5px;font-weight:600;color:var(--texto)}
+.rev-date{font-size:11.5px;color:var(--cinza-text)}
+.rev-txt{font-size:13px;color:var(--texto);line-height:1.6}
+.modal-foot{display:flex;gap:12px;padding:16px 24px;border-top:1px solid var(--cinza-borda);position:sticky;bottom:0;background:#fff;z-index:5}
+.mfoot-price{flex:1}
+.mfoot-price-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--azul)}
+.mfoot-price-lbl{font-size:11px;color:var(--cinza-text)}
+
+/* FLUXO */
+#solicitar{padding:72px 20px}
+.flow-container{max-width:780px;margin:0 auto}
+.flow-steps{display:flex;align-items:center;background:#fff;border-radius:14px;padding:6px;border:1px solid var(--cinza-borda);box-shadow:var(--sombra-leve);margin-bottom:40px}
+.flow-step{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 10px;border-radius:10px;font-size:13px;font-weight:600;color:var(--cinza-text);transition:all .3s}
+.flow-step.active{background:var(--azul);color:#fff}
+.flow-step.done{background:var(--sucesso-pale);color:var(--sucesso)}
+.flow-step-num{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;background:var(--cinza-borda);color:var(--cinza-text);flex-shrink:0}
+.flow-step.active .flow-step-num{background:rgba(255,255,255,.25);color:#fff}
+.flow-step.done .flow-step-num{background:var(--sucesso);color:#fff}
+@media(max-width:480px){.flow-step span:not(.flow-step-num){display:none}}
+.flow-screen{display:none}
+.flow-screen.active{display:block;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.form-card{background:#fff;border-radius:20px;padding:36px;border:1px solid var(--cinza-borda);box-shadow:var(--sombra-leve)}
+@media(max-width:480px){.form-card{padding:22px 16px}}
+.form-title{font-family:'Syne',sans-serif;font-weight:800;font-size:1.4rem;color:var(--texto);margin-bottom:6px}
+.form-sub{font-size:14px;color:var(--cinza-text);margin-bottom:28px}
+.prof-banner{background:linear-gradient(135deg,var(--azul),var(--azul-medio));border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:14px;margin-bottom:24px;color:#fff;flex-wrap:wrap}
+.pb-avatar{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:17px;color:#fff;flex-shrink:0;border:2px solid rgba(255,255,255,.3)}
+.pb-name{font-weight:700;font-size:14.5px}
+.pb-sub{font-size:12px;opacity:.7}
+.pb-badge{margin-left:auto;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:5px 12px;border-radius:8px;font-size:12px;font-weight:700}
+.btn-trocar{background:none;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.8);padding:6px 12px;border-radius:7px;font-size:12px;cursor:pointer;font-family:'Manrope',sans-serif;font-weight:600}
+.btn-trocar:hover{background:rgba(255,255,255,.12)}
+.field-group{margin-bottom:20px}
+.field-label{display:block;font-size:13px;font-weight:600;color:var(--texto);margin-bottom:7px}
+.field-label .req{color:var(--laranja)}
+.field-input,.field-select,.field-textarea{width:100%;background:var(--cinza-bg);border:1.5px solid var(--cinza-borda);border-radius:10px;padding:12px 14px;font-family:'Manrope',sans-serif;font-size:14px;color:var(--texto);transition:all .2s;outline:none}
+.field-input:focus,.field-select:focus,.field-textarea:focus{border-color:var(--azul-claro);background:#fff;box-shadow:0 0 0 3px rgba(59,114,200,.1)}
+.field-input.error,.field-textarea.error{border-color:#DC2626;box-shadow:0 0 0 3px rgba(220,38,38,.1)}
+.field-textarea{resize:vertical;min-height:110px}
+.field-error{font-size:12px;color:#DC2626;margin-top:5px;display:none}
+.char-counter{font-size:12px;color:var(--cinza-text);text-align:right;margin-top:4px}
+.char-counter.ok{color:var(--sucesso);font-weight:600}
+.char-counter.warn{color:#DC2626;font-weight:600}
+.cat-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cat-opt{border:1.5px solid var(--cinza-borda);background:var(--cinza-bg);color:var(--cinza-text);padding:12px 14px;border-radius:10px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .2s;font-size:13.5px;font-weight:500;user-select:none;font-family:'Manrope',sans-serif}
+.cat-opt:hover{border-color:var(--azul-claro);background:var(--azul-pale)}
+.cat-opt.selected{border-color:var(--azul);background:var(--azul-pale);color:var(--azul);font-weight:700}
+.presencial-box{background:var(--azul-pale);border:2px solid var(--azul-claro);border-radius:12px;padding:16px 18px;display:flex;align-items:flex-start;gap:14px;cursor:pointer}
+.presencial-box:hover{background:#dceaff}
+.presencial-box input[type=checkbox]{width:20px;height:20px;accent-color:var(--azul);margin-top:2px;flex-shrink:0;cursor:pointer}
+.presencial-box .pb-title{font-size:14px;font-weight:700;color:var(--azul);margin-bottom:3px}
+.presencial-box .pb-desc{font-size:12.5px;color:var(--cinza-text);line-height:1.5}
+.presencial-badge{display:inline-block;background:var(--laranja);color:#fff;font-size:9.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:4px;margin-left:6px;vertical-align:middle}
+.form-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:28px}
+
+/* CHAT */
+.chat-wrap{background:#fff;border-radius:20px;border:1px solid var(--cinza-borda);overflow:hidden;box-shadow:var(--sombra-leve)}
+.chat-hdr{background:var(--azul);padding:16px 22px;display:flex;align-items:center;gap:14px}
+.chat-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:#fff;flex-shrink:0}
+.chat-hdr-info .cname{font-weight:700;font-size:14.5px;color:#fff}
+.chat-hdr-info .cstatus{font-size:12px;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:5px}
+.online-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80}
+.chat-id{margin-left:auto;background:rgba(255,255,255,.15);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px}
+.chat-msgs{padding:20px;display:flex;flex-direction:column;gap:14px;min-height:280px;max-height:340px;overflow-y:auto;background:var(--cinza-bg)}
+.msg{max-width:78%;display:flex;flex-direction:column;gap:3px}
+.msg.client{align-self:flex-end;align-items:flex-end}
+.msg.prestador{align-self:flex-start;align-items:flex-start}
+.msg-bubble{padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.55}
+.msg.client .msg-bubble{background:var(--azul);color:#fff;border-bottom-right-radius:4px}
+.msg.prestador .msg-bubble{background:#fff;color:var(--texto);border:1px solid var(--cinza-borda);border-bottom-left-radius:4px}
+.msg-time{font-size:11px;color:var(--cinza-text)}
+.msg-sender{font-size:11px;font-weight:700;color:var(--cinza-text)}
+.oferta-card{background:#fff;border:2px solid var(--azul-claro);border-radius:12px;padding:16px;margin:4px 0}
+.oferta-val{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--azul)}
+.oferta-prazo{font-size:12.5px;color:var(--cinza-text);margin-top:2px}
+.oferta-acts{display:flex;gap:8px;margin-top:12px}
+.btn-aceitar{background:var(--sucesso);color:#fff;border:none;padding:9px 18px;border-radius:8px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;cursor:pointer}
+.btn-aceitar:hover{background:#146b43}
+.btn-neg{background:transparent;color:var(--azul);border:1.5px solid var(--azul);padding:9px 18px;border-radius:8px;font-family:'Syne',sans-serif;font-weight:600;font-size:13px;cursor:pointer}
+.btn-neg:hover{background:var(--azul-pale)}
+.chat-input-row{padding:14px 18px;border-top:1px solid var(--cinza-borda);display:flex;gap:10px;align-items:center;background:#fff}
+.chat-input{flex:1;background:var(--cinza-bg);border:1.5px solid var(--cinza-borda);border-radius:100px;padding:10px 18px;font-family:'Manrope',sans-serif;font-size:13.5px;color:var(--texto);outline:none;transition:all .2s}
+.chat-input:focus{border-color:var(--azul-claro);background:#fff}
+.btn-send{width:42px;height:42px;border-radius:50%;background:var(--azul);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.btn-send:hover{background:var(--azul-medio)}
+
+/* PAGAMENTO */
+.pag-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+@media(max-width:640px){.pag-grid{grid-template-columns:1fr}}
+.pag-methods{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.pag-method{border:2px solid var(--cinza-borda);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .2s}
+.pag-method:hover{border-color:var(--azul-claro);background:var(--azul-pale)}
+.pag-method.selected{border-color:var(--azul);background:var(--azul-pale)}
+.pag-method input[type=radio]{accent-color:var(--azul);width:18px;height:18px;flex-shrink:0}
+.pag-lbl{font-weight:600;font-size:14px;color:var(--texto)}
+.pag-sub{font-size:12px;color:var(--cinza-text)}
+.pix-box{background:var(--cinza-bg);border-radius:12px;padding:20px;text-align:center;display:none}
+.pix-box.active{display:block}
+.pix-qr{width:130px;height:130px;background:#fff;margin:0 auto 12px;border-radius:10px;display:flex;align-items:center;justify-content:center;border:2px dashed var(--cinza-borda)}
+.pix-code{font-size:11px;color:var(--cinza-text);word-break:break-all;background:#fff;padding:8px 12px;border-radius:8px;margin:8px 0;border:1px solid var(--cinza-borda);font-family:monospace}
+.btn-copy{background:var(--azul-pale);color:var(--azul);border:none;padding:8px 16px;border-radius:8px;font-weight:700;font-size:12px;cursor:pointer;width:100%;margin-top:4px;transition:all .2s;font-family:'Manrope',sans-serif}
+.btn-copy:hover{background:var(--azul);color:#fff}
+.card-form{display:none;flex-direction:column;gap:14px}
+.card-form.active{display:flex}
+.card-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.resumo-box{background:var(--cinza-bg);border-radius:16px;padding:22px;border:1px solid var(--cinza-borda)}
+.resumo-title{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:16px;color:var(--texto)}
+.resumo-linha{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--cinza-borda);font-size:13.5px;color:var(--cinza-text)}
+.resumo-linha:last-child{border:none}
+.resumo-linha.total{font-weight:800;font-size:16px;color:var(--texto)}
+.resumo-linha.total span:last-child{color:var(--azul);font-family:'Syne',sans-serif}
+.selos{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.selo{display:flex;align-items:center;gap:6px;background:#EDFCF2;color:var(--sucesso);font-size:11px;font-weight:700;padding:5px 10px;border-radius:6px;border:1px solid #BBF7D0}
+
+/* AVALIAÇÕES */
+#avaliacoes{padding:72px 20px;background:var(--azul);position:relative;overflow:hidden}
+.aval-header{text-align:center;margin-bottom:44px}
+.aval-header .section-tag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8)}
+.aval-header .section-title{color:#fff}
+.aval-header .section-sub{color:rgba(255,255,255,.6);margin-inline:auto}
+.aval-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.aval-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:24px;transition:all .25s}
+.aval-card:hover{background:rgba(255,255,255,.12);transform:translateY(-3px)}
+.aval-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.aval-user{display:flex;align-items:center;gap:12px}
+.aval-av{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:16px;color:#fff;flex-shrink:0}
+.aval-name{font-weight:700;font-size:14px;color:#fff}
+.aval-local{font-size:12px;color:rgba(255,255,255,.5)}
+.stars-disp{color:#F59E0B;font-size:16px;letter-spacing:2px}
+.aval-text{font-size:13.5px;color:rgba(255,255,255,.75);line-height:1.65;margin-bottom:14px}
+.aval-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.aval-cat{display:inline-flex;align-items:center;gap:6px;background:rgba(245,98,10,.2);color:#FFAB80;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px}
+.aval-id{font-size:11px;color:rgba(255,255,255,.35)}
+
+/* SUCCESS */
+.success-screen{text-align:center;padding:48px 28px}
+.success-icon{width:80px;height:80px;border-radius:50%;background:#EDFCF2;border:3px solid var(--sucesso);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.success-title{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--texto);margin-bottom:8px}
+.success-sub{font-size:14.5px;color:var(--cinza-text);margin-bottom:24px;line-height:1.7}
+.success-id-box{background:var(--azul-pale);border:1px solid var(--azul-claro);border-radius:10px;padding:12px 20px;display:inline-block;font-family:'Syne',sans-serif;font-weight:700;color:var(--azul);font-size:15px}
+
+/* FOOTER */
+footer{background:var(--texto);color:rgba(255,255,255,.6);padding:40px 20px 24px}
+.footer-inner{max-width:1120px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.footer-logo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:13px;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12px}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;z-index:9999;background:var(--texto);color:#fff;padding:12px 20px;border-radius:12px;font-size:13.5px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,.25);display:flex;align-items:center;gap:10px;transform:translateY(80px);opacity:0;transition:all .35s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;flex-shrink:0}
+.chat-msgs::-webkit-scrollbar,.modal-box::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb,.modal-box::-webkit-scrollbar-thumb{background:var(--cinza-borda);border-radius:2px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      Casa Fácil
+    </a>
+    <div class="nav-links">
+      <a href="#buscar">Profissionais</a>
+      <a href="#solicitar">Solicitar</a>
+      <a href="#avaliacoes">Avaliações</a>
+    </div>
+    <div class="nav-cta">
+      <button class="btn-outline" style="padding:9px 18px;font-size:13px">Entrar</button>
+      <button class="btn-laranja" style="padding:9px 18px;font-size:13px" onclick="go('buscar')">Buscar Profissional</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Plataforma 100% Verificada
+      </div>
+      <h1 class="hero-title">Reparos domésticos feitos com <span>confiança e transparência</span></h1>
+      <p class="hero-sub">Encontre profissionais verificados perto de você, veja o portfólio real, negocie com segurança e pague com garantia.</p>
+      <div class="hero-btns">
+        <button class="btn-laranja" onclick="go('buscar')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Buscar Profissionais
+        </button>
+        <button class="btn-outline" style="color:#fff;border-color:rgba(255,255,255,.35)" onclick="go('avaliacoes')">Ver Avaliações</button>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Profissionais verificados</div>
+        <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Pagamento protegido</div>
+        <div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Histórico documentado</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-title">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--laranja)"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Profissionais próximos a você
+      </div>
+      <div class="mini-cat-item" onclick="filtrarCat('Pintura')"><div class="mini-cat-icon" style="background:#FFF3E8">🖌️</div>Pintura e Acabamento<svg style="margin-left:auto;color:var(--cinza-text)" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="mini-cat-item" onclick="filtrarCat('Hidráulica')"><div class="mini-cat-icon" style="background:#E8F4FF">🔧</div>Hidráulica<svg style="margin-left:auto;color:var(--cinza-text)" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="mini-cat-item" onclick="filtrarCat('Elétrica')"><div class="mini-cat-icon" style="background:#FFFBEA">⚡</div>Elétrica<svg style="margin-left:auto;color:var(--cinza-text)" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="mini-cat-item" onclick="filtrarCat('Montagem')"><div class="mini-cat-icon" style="background:#EDFCF2">🪑</div>Montagem de Móveis<svg style="margin-left:auto;color:var(--cinza-text)" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="hero-rating">
+        <div style="color:#F59E0B;letter-spacing:1px">★★★★★</div>
+        <div style="font-size:12.5px;color:var(--cinza-text)"><strong style="color:var(--texto)">4.9/5</strong> · +2.400 avaliações</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats"><div class="container"><div class="stats-grid">
+  <div class="stat-item"><div class="stat-num">8.200+</div><div class="stat-label">Profissionais verificados</div></div>
+  <div class="stat-item"><div class="stat-num">24.600+</div><div class="stat-label">Serviços concluídos</div></div>
+  <div class="stat-item"><div class="stat-num">4.9★</div><div class="stat-label">Avaliação média</div></div>
+  <div class="stat-item"><div class="stat-num">99%</div><div class="stat-label">Disponibilidade</div></div>
+</div></div></section>
+
+<!-- BUSCA DE PROFISSIONAIS -->
+<section id="buscar">
+  <div class="container">
+    <div class="busca-header">
+      <div class="section-tag">UC02 · Filtrar por Categoria e Geolocalização</div>
+      <h2 class="section-title">Encontre o profissional certo para você</h2>
+      <p class="section-sub" style="margin:0 auto">Veja o portfólio, leia avaliações reais e solicite diretamente pelo perfil.</p>
+    </div>
+    <div class="busca-bar">
+      <div class="busca-row">
+        <div class="busca-field">
+          <label>Categoria de serviço</label>
+          <select class="busca-input" id="sel-cat" onchange="renderProfs()">
+            <option value="">Todas as categorias</option>
+            <option value="Pintura">🖌️ Pintura</option>
+            <option value="Hidráulica">🔧 Hidráulica</option>
+            <option value="Elétrica">⚡ Elétrica</option>
+            <option value="Montagem">🪑 Montagem de Móveis</option>
+            <option value="Alvenaria">🧱 Alvenaria</option>
+            <option value="Jardinagem">🌿 Jardinagem</option>
+          </select>
+        </div>
+        <div class="busca-field">
+          <label>Seu bairro / CEP</label>
+          <input type="text" class="busca-input" id="inp-local" placeholder="Ex: Vila Madalena ou 05435-000">
+        </div>
+        <button class="btn-loc" id="btn-geo" onclick="simularGeo()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+          <span id="geo-lbl">Minha localização</span>
+        </button>
+        <button class="busca-btn" onclick="renderProfs()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Buscar
+        </button>
+      </div>
+      <div class="filtros-row">
+        <span class="filtro-label">Ordenar:</span>
+        <button class="chip ativo" id="chip-prox" onclick="setOrdem('proximidade')">📍 Mais próximos</button>
+        <button class="chip" id="chip-aval" onclick="setOrdem('avaliacao')">⭐ Melhor avaliados</button>
+        <button class="chip" id="chip-preco" onclick="setOrdem('preco')">💰 Menor preço</button>
+        <button class="chip" id="chip-disp" onclick="setOrdem('disponivel')">🟢 Disponível agora</button>
+      </div>
+    </div>
+    <div class="busca-status">
+      <div class="busca-status-txt" id="status-txt">Mostrando <strong>8 profissionais</strong> próximos a você</div>
+      <div class="geo-pill" id="geo-pill">📍 <span id="geo-pill-txt">Pinheiros, SP</span></div>
+    </div>
+    <div class="prof-grid" id="prof-grid"></div>
+  </div>
+</section>
+
+<!-- MODAL PERFIL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal-box">
+    <div class="modal-topbar"><button class="modal-close-btn" onclick="closeModal()">✕</button></div>
+    <div class="modal-body" id="modal-body"></div>
+    <div class="modal-foot" id="modal-foot"></div>
+  </div>
+</div>
+
+<!-- FLUXO DE CONTRATAÇÃO -->
+<section id="solicitar">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:44px">
+      <div class="section-tag">Fluxo de Contratação · RF06 — ID_Pedido Único</div>
+      <h2 class="section-title">Solicite, negocie e pague em um só lugar</h2>
+      <p class="section-sub" style="margin:0 auto">Todo o processo centralizado. Nenhuma negociação fora da plataforma.</p>
+    </div>
+    <div class="flow-container">
+      <div class="flow-steps">
+        <div class="flow-step active" id="step-1"><span class="flow-step-num">1</span><span>Solicitação</span></div>
+        <div class="flow-step" id="step-2"><span class="flow-step-num">2</span><span>Negociação</span></div>
+        <div class="flow-step" id="step-3"><span class="flow-step-num">3</span><span>Pagamento</span></div>
+        <div class="flow-step" id="step-4"><span class="flow-step-num">✓</span><span>Confirmado</span></div>
+      </div>
+
+      <!-- TELA 1 -->
+      <div class="flow-screen active" id="tela-solicitar">
+        <div class="form-card">
+          <div class="form-title">Solicitar Orçamento</div>
+          <div class="form-sub" id="form-sub">UC02 · Preencha os detalhes para enviar ao profissional</div>
+          <div id="prof-banner"></div>
+          <div class="field-group">
+            <label class="field-label">Categoria do Serviço <span class="req">*</span></label>
+            <div class="cat-opts">
+              <div class="cat-opt" id="opt-Pintura" onclick="toggleCat('Pintura')"><span>🖌️</span> Pintura</div>
+              <div class="cat-opt" id="opt-Hidráulica" onclick="toggleCat('Hidráulica')"><span>🔧</span> Hidráulica</div>
+              <div class="cat-opt" id="opt-Elétrica" onclick="toggleCat('Elétrica')"><span>⚡</span> Elétrica</div>
+              <div class="cat-opt" id="opt-Montagem" onclick="toggleCat('Montagem')"><span>🪑</span> Montagem</div>
+            </div>
+            <div class="field-error" id="err-cat">Selecione ao menos uma categoria.</div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Descrição do problema <span class="req">*</span></label>
+            <textarea class="field-textarea" id="descricao" placeholder="Descreva o problema em detalhes. Quanto mais informações, melhor o orçamento..." oninput="onDescricao(this)"></textarea>
+            <div class="char-counter" id="char-cnt">0 / mínimo 20 caracteres — FE01</div>
+            <div class="field-error" id="err-desc">A descrição deve ter no mínimo 20 caracteres (FE01).</div>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Endereço <span class="req">*</span></label>
+            <input type="text" class="field-input" id="endereco" placeholder="Rua, número, bairro">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Vistoria Técnica</label>
+            <label class="presencial-box" for="chk-pres">
+              <input type="checkbox" id="chk-pres">
+              <div>
+                <div class="pb-title">Solicitar Avaliação Presencial <span class="presencial-badge">Recomendado</span></div>
+                <div class="pb-desc">UC02.1 — O profissional visita o local antes de enviar o orçamento final, evitando erros de precificação.</div>
+              </div>
+            </label>
+          </div>
+          <div class="field-group">
+            <label class="field-label">Prazo desejado</label>
+            <select class="field-select" id="prazo">
+              <option value="">Selecione...</option>
+              <option>Urgente (até 24h)</option>
+              <option>Esta semana</option>
+              <option>Este mês</option>
+              <option>Sem pressa</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button class="btn-laranja" onclick="solicitarOrcamento()">
+              Solicitar Orçamento
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TELA 2: CHAT -->
+      <div class="flow-screen" id="tela-chat">
+        <div class="chat-wrap">
+          <div class="chat-hdr">
+            <div class="chat-av" id="chat-av" style="background:#2456A4">JC</div>
+            <div class="chat-hdr-info">
+              <div class="cname" id="chat-name">Profissional</div>
+              <div class="cstatus"><div class="online-dot"></div>Online agora</div>
+            </div>
+            <div class="chat-id" id="chat-id">ID: —</div>
+          </div>
+          <div class="chat-msgs" id="chat-msgs"></div>
+          <div class="chat-input-row">
+            <input type="text" class="chat-input" id="chat-inp" placeholder="Digite uma mensagem..." onkeydown="if(event.key==='Enter')enviarMsg()">
+            <button class="btn-send" onclick="enviarMsg()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TELA 3: PAGAMENTO -->
+      <div class="flow-screen" id="tela-pagamento">
+        <div class="form-card">
+          <div class="form-title">Checkout Seguro</div>
+          <div class="form-sub">UC04 · O profissional só recebe após a conclusão do serviço.</div>
+          <div class="pag-grid">
+            <div>
+              <label class="field-label" style="margin-bottom:14px">Método de Pagamento</label>
+              <div class="pag-methods">
+                <label class="pag-method selected" id="met-pix" onclick="selPag('pix')">
+                  <input type="radio" name="pag" value="pix" checked>
+                  <span style="font-size:20px">🟢</span>
+                  <div><div class="pag-lbl">PIX</div><div class="pag-sub">Confirmação instantânea</div></div>
+                </label>
+                <label class="pag-method" id="met-cartao" onclick="selPag('cartao')">
+                  <input type="radio" name="pag" value="cartao">
+                  <span style="font-size:20px">💳</span>
+                  <div><div class="pag-lbl">Cartão de Crédito</div><div class="pag-sub">Em até 12x sem juros</div></div>
+                </label>
+              </div>
+              <div class="pix-box active" id="pix-box">
+                <div class="pix-qr"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="7" y="7" width="3" height="3" fill="var(--azul)" stroke="none"/><rect x="14" y="14" width="3" height="3" fill="var(--azul)" stroke="none"/></svg></div>
+                <div style="font-size:12.5px;color:var(--cinza-text);margin-bottom:4px">Escaneie ou copie a chave</div>
+                <div class="pix-code">casa-facil-pedido@pix.bcb.gov.br</div>
+                <button class="btn-copy" onclick="toast('✓ Chave PIX copiada!')">📋 Copiar chave PIX</button>
+              </div>
+              <div class="card-form" id="card-form">
+                <div class="field-group" style="margin:0"><label class="field-label">Número do cartão</label><input type="text" class="field-input" placeholder="0000 0000 0000 0000" maxlength="19" oninput="this.value=this.value.replace(/\D/g,'').substring(0,16).replace(/(.{4})/g,'$1 ').trim()"></div>
+                <div class="field-group" style="margin:0"><label class="field-label">Nome no cartão</label><input type="text" class="field-input" placeholder="Como está no cartão"></div>
+                <div class="card-row">
+                  <div class="field-group" style="margin:0"><label class="field-label">Validade</label><input type="text" class="field-input" placeholder="MM/AA" maxlength="5"></div>
+                  <div class="field-group" style="margin:0"><label class="field-label">CVV</label><input type="text" class="field-input" placeholder="000" maxlength="3"></div>
+                </div>
+                <div class="field-group" style="margin:0"><label class="field-label">Parcelas</label><select class="field-select"><option>1x de R$ 350,00 (sem juros)</option><option>3x de R$ 116,67</option><option>6x de R$ 58,33</option><option>12x de R$ 29,17</option></select></div>
+              </div>
+            </div>
+            <div>
+              <div class="resumo-box">
+                <div class="resumo-title">Resumo do Pedido</div>
+                <div class="resumo-linha"><span>Serviço</span><span id="res-serv">—</span></div>
+                <div class="resumo-linha"><span>Profissional</span><span id="res-prof">—</span></div>
+                <div class="resumo-linha"><span>Distância</span><span id="res-dist">—</span></div>
+                <div class="resumo-linha"><span>Prazo</span><span>2 dias úteis</span></div>
+                <div class="resumo-linha"><span>Vistoria presencial</span><span id="res-pres" style="color:var(--sucesso);font-weight:600">—</span></div>
+                <div class="resumo-linha"><span>Subtotal</span><span id="res-val">R$ 350,00</span></div>
+                <div class="resumo-linha"><span>Taxa</span><span>Grátis</span></div>
+                <div class="resumo-linha total"><span>Total</span><span id="res-total">R$ 350,00</span></div>
+              </div>
+              <div class="selos">
+                <div class="selo">🔒 SSL 256-bit</div>
+                <div class="selo">✓ Pagamento Seguro</div>
+                <div class="selo">📋 LGPD</div>
+                <div class="selo">🛡 Garantia 30 dias</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions" style="margin-top:24px">
+            <button class="btn-outline" onclick="irParaTela('chat')">← Voltar</button>
+            <button class="btn-laranja" onclick="processarPagamento()">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Confirmar Pagamento
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TELA 4: SUCESSO -->
+      <div class="flow-screen" id="tela-sucesso">
+        <div class="form-card">
+          <div class="success-screen">
+            <div class="success-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--sucesso)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="success-title">Pedido Confirmado!</div>
+            <p class="success-sub">Seu pagamento foi processado com segurança. O profissional foi notificado e entrará em contato em breve.</p>
+            <div class="success-id-box" id="success-id">ID_Pedido: CF-2025-8821</div>
+            <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+              <button class="btn-azul" onclick="reiniciar()">Solicitar Outro Serviço</button>
+              <button class="btn-outline" onclick="toast('Redirecionando para Meus Pedidos...')">Ver Meus Pedidos</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section id="avaliacoes"><div class="container">
+  <div class="aval-header">
+    <div class="section-tag">UC05 · Sistema de Avaliação</div>
+    <h2 class="section-title">O que nossos clientes dizem</h2>
+    <p class="section-sub">Avaliações reais vinculadas ao ID_Pedido. Transparência total.</p>
+  </div>
+  <div class="aval-grid">
+    <div class="aval-card">
+      <div class="aval-top"><div class="aval-user"><div class="aval-av" style="background:#2456A4">MC</div><div><div class="aval-name">Maria Clara S.</div><div class="aval-local">📍 Vila Madalena, SP</div></div></div><div class="stars-disp">★★★★★</div></div>
+      <div class="aval-text">"Encontrei o pintor em 3 minutos pela busca de proximidade. Vi o portfólio antes de contratar e o resultado foi exatamente como as fotos. A vistoria presencial evitou uma surpresa desagradável."</div>
+      <div class="aval-footer"><div class="aval-cat">🖌️ Pintura</div><div class="aval-id">ID: CF-2025-7741</div></div>
+    </div>
+    <div class="aval-card">
+      <div class="aval-top"><div class="aval-user"><div class="aval-av" style="background:#D97706">RS</div><div><div class="aval-name">Roberto S.</div><div class="aval-local">📍 Moema, SP</div></div></div><div class="stars-disp">★★★★★</div></div>
+      <div class="aval-text">"Profissional estava a 1.2km de mim. Chegou em 40 minutos, resolveu o vazamento e deixou fotos registradas no perfil. Aceitei o orçamento direto pelo chat da plataforma."</div>
+      <div class="aval-footer"><div class="aval-cat">🔧 Hidráulica</div><div class="aval-id">ID: CF-2025-8203</div></div>
+    </div>
+    <div class="aval-card">
+      <div class="aval-top"><div class="aval-user"><div class="aval-av" style="background:#BE185D">AF</div><div><div class="aval-name">Ana Figueiredo</div><div class="aval-local">📍 Pinheiros, SP</div></div></div><div class="stars-disp">★★★★☆</div></div>
+      <div class="aval-text">"O chat interno é essencial. Negociei cada detalhe com o eletricista antes de confirmar. Fui direto ao perfil dele, vi as avaliações e solicitei pelo botão. Simples e seguro."</div>
+      <div class="aval-footer"><div class="aval-cat">⚡ Elétrica</div><div class="aval-id">ID: CF-2025-8560</div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer><div class="footer-inner">
+  <div class="footer-top">
+    <div class="footer-logo">🏠 Casa Fácil</div>
+    <div class="footer-links"><a href="#">Sobre nós</a><a href="#">Como funciona</a><a href="#">Para profissionais</a><a href="#">LGPD</a><a href="#">Termos</a></div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 Casa Fácil · Plataforma Digital para Serviços Domésticos</div>
+    <span style="color:rgba(255,255,255,.3);font-size:11px">RF01–RF07 · RNF01–RNF05 atendidos</span>
+  </div>
+</div></footer>
+
+<div class="toast" id="toast-el"><div class="toast-dot"></div><span id="toast-msg">Ação realizada!</span></div>
+
+<script>
+/* ═══ DADOS ═══ */
+const PROFS = [
+  {id:'p1',nome:'José Carlos Lima',ini:'JC',cor:'#2456A4',cat:'Hidráulica',tags:['Vazamentos','Encanamento','Box','Torneiras'],dist:0.8,distTxt:'0,8 km',av:4.9,revs:127,preco:80,online:true,bio:'Encanador com 12 anos de experiência em residências e condomínios. Atendo emergências em até 1h.',servicos:['Reparo de vazamentos','Desentupimento','Instalação de torneiras','Substituição de canos','Instalação de chuveiro'],port:[{bg:'#7EAFD4',lbl:'Reparo hidráulico'},{bg:'#5B9EC9',lbl:'Instalação box'},{bg:'#3A7FB5',lbl:'Troca de encanamento'}],revList:[{n:'Pedro A.',i:'PA',c:'#2456A4',nota:5,t:'Serviço impecável, chegou em 30 min.',d:'há 3 dias'},{n:'Carla M.',i:'CM',c:'#BE185D',nota:5,t:'Super profissional, deixou tudo limpo.',d:'há 1 sem.'}]},
+  {id:'p2',nome:'Ana Paula Ramos',ini:'AP',cor:'#D97706',cat:'Pintura',tags:['Paredes','Teto','Textura','Grafiato'],dist:1.2,distTxt:'1,2 km',av:5.0,revs:89,preco:120,online:true,bio:'Pintora profissional especializada em acabamentos finos e texturas decorativas. 8 anos no mercado.',servicos:['Pintura interna e externa','Textura','Grafiato','Epóxi','Verniz'],port:[{bg:'#E8A855',lbl:'Textura sala'},{bg:'#D4902A',lbl:'Pintura fachada'},{bg:'#C07820',lbl:'Epóxi cozinha'}],revList:[{n:'Luisa T.',i:'LT',c:'#D97706',nota:5,t:'Resultado perfeito! Melhor do que imaginei.',d:'há 2 dias'},{n:'Marcos F.',i:'MF',c:'#2456A4',nota:5,t:'Pontual e muito cuidadosa.',d:'há 5 dias'}]},
+  {id:'p3',nome:'Roberto Silva',ini:'RS',cor:'#1A8754',cat:'Elétrica',tags:['Instalações','Disjuntores','Iluminação','Laudos'],dist:1.5,distTxt:'1,5 km',av:4.8,revs:203,preco:95,online:false,bio:'Eletricista certificado (NR10). Instalações residenciais e comerciais. Emissão de laudos técnicos.',servicos:['Instalação de tomadas','Quadro de distribuição','Iluminação','Câmeras','Laudo técnico'],port:[{bg:'#5CB88A',lbl:'Quadro elétrico'},{bg:'#3D9E70',lbl:'Iluminação sala'},{bg:'#2A8558',lbl:'Câmera'}],revList:[{n:'Ana C.',i:'AC',c:'#BE185D',nota:5,t:'Resolveu um problema que outros não conseguiram.',d:'há 1 sem.'},{n:'Jorge P.',i:'JP',c:'#2456A4',nota:4,t:'Bom serviço, um pouco demorado.',d:'há 2 sem.'}]},
+  {id:'p4',nome:'Marcos Ferreira',ini:'MF',cor:'#7C3AED',cat:'Montagem',tags:['IKEA','Planejados','Estantes','Escritório'],dist:2.1,distTxt:'2,1 km',av:4.9,revs:156,preco:70,online:true,bio:'Especialista em montagem de móveis de todas as marcas. Mais de 2.000 montagens realizadas.',servicos:['Montagem IKEA','Móveis planejados','Estantes','Home office','Guarda-roupas'],port:[{bg:'#A78BFA',lbl:'Home office'},{bg:'#8B5CF6',lbl:'Guarda-roupa'},{bg:'#7C3AED',lbl:'Cozinha planejada'}],revList:[{n:'Beatriz S.',i:'BS',c:'#7C3AED',nota:5,t:'8 móveis IKEA em 3 horas. Perfeito!',d:'há 4 dias'},{n:'Ricardo L.',i:'RL',c:'#1A8754',nota:5,t:'Muito rápido e eficiente.',d:'há 1 sem.'}]},
+  {id:'p5',nome:'Fernanda Costa',ini:'FC',cor:'#0891B2',cat:'Pintura',tags:['Residencial','Externo','Textura','Impermeabilização'],dist:2.4,distTxt:'2,4 km',av:4.7,revs:74,preco:100,online:true,bio:'Pintora com especialização em impermeabilização e fachadas externas.',servicos:['Pintura externa','Impermeabilização','Textura fachada','Pintura piscina'],port:[{bg:'#67C4D8',lbl:'Fachada externa'},{bg:'#38A5C0',lbl:'Impermeabilização'},{bg:'#0E87A8',lbl:'Pintura residencial'}],revList:[{n:'Silvio B.',i:'SB',c:'#0891B2',nota:5,t:'Salvou minha fachada. Excelente!',d:'há 3 dias'}]},
+  {id:'p6',nome:'Carlos Mendes',ini:'CM',cor:'#B45309',cat:'Alvenaria',tags:['Pedreiro','Pisos','Reboco','Reforma'],dist:3.0,distTxt:'3,0 km',av:4.6,revs:112,preco:110,online:false,bio:'Pedreiro com 15 anos de experiência em reformas residenciais completas.',servicos:['Assentamento de pisos','Reboco','Massa fina','Reforma de banheiro','Paredes'],port:[{bg:'#D4A464',lbl:'Banheiro reformado'},{bg:'#B8883C',lbl:'Piso porcelanato'},{bg:'#9C6C20',lbl:'Reboco externo'}],revList:[{n:'Camila R.',i:'CR',c:'#B45309',nota:5,t:'Banheiro transformado! Qualidade total.',d:'há 1 sem.'}]},
+  {id:'p7',nome:'Juliana Matos',ini:'JM',cor:'#059669',cat:'Jardinagem',tags:['Grama','Poda','Paisagismo','Manutenção'],dist:3.3,distTxt:'3,3 km',av:4.8,revs:61,preco:60,online:true,bio:'Paisagista e jardineira. Manutenção mensal e projetos de jardim.',servicos:['Corte de grama','Poda de árvores','Paisagismo','Irrigação','Jardim vertical'],port:[{bg:'#6EE7B7',lbl:'Jardim projetado'},{bg:'#34D399',lbl:'Grama cortada'},{bg:'#10B981',lbl:'Paisagismo'}],revList:[{n:'Helena V.',i:'HV',c:'#059669',nota:5,t:'Jardim lindo! Ela transforma o espaço.',d:'há 2 dias'}]},
+  {id:'p8',nome:'Diego Alves',ini:'DA',cor:'#DC2626',cat:'Hidráulica',tags:['Emergências','Desentupimento','Caixa d\'água'],dist:4.0,distTxt:'4,0 km',av:4.7,revs:88,preco:90,online:false,bio:'Encanador especialista em desentupimento e emergências 24h.',servicos:['Desentupimento','Caixa d\'água','Emergências','Conserto de encanamento'],port:[{bg:'#FCA5A5',lbl:'Desentupimento'},{bg:'#F87171',lbl:'Caixa d\'água'},{bg:'#EF4444',lbl:'Reparo emergencial'}],revList:[{n:'Paulo G.',i:'PG',c:'#DC2626',nota:5,t:'Chegou rápido na emergência.',d:'há 5 dias'}]}
+];
+
+/* ═══ STATE ═══ */
+let ordem='proximidade', geoAtivo=false, profSel=null, catsSel=[], idPedido='';
+
+/* ═══ HELPERS ═══ */
+function go(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function toast(msg,dur=3000){const t=document.getElementById('toast-el');document.getElementById('toast-msg').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur)}
+function stars(n){return'★'.repeat(n)+'☆'.repeat(5-n)}
+
+/* ═══ GEO SIMULADO ═══ */
+function simularGeo(){
+  const btn=document.getElementById('btn-geo'),lbl=document.getElementById('geo-lbl');
+  lbl.textContent='Localizando...';btn.style.opacity='.7';
+  setTimeout(()=>{
+    geoAtivo=true;btn.classList.add('ativo');lbl.textContent='Pinheiros, SP';btn.style.opacity='1';
+    const pill=document.getElementById('geo-pill');pill.classList.add('show');
+    renderProfs();toast('📍 Localização: Pinheiros, SP');
+  },1100);
+}
+
+/* ═══ FILTROS ═══ */
+function filtrarCat(cat){document.getElementById('sel-cat').value=cat;go('buscar');renderProfs()}
+function setOrdem(o){
+  ordem=o;
+  ['prox','aval','preco','disp'].forEach(c=>document.getElementById('chip-'+c).classList.remove('ativo'));
+  const m={proximidade:'prox',avaliacao:'aval',preco:'preco',disponivel:'disp'};
+  document.getElementById('chip-'+m[o]).classList.add('ativo');
+  renderProfs();
+}
+
+/* ═══ RENDER GRID ═══ */
+function renderProfs(){
+  const grid=document.getElementById('prof-grid');
+  const cat=document.getElementById('sel-cat').value;
+  // Skeleton
+  grid.innerHTML=Array(4).fill('').map(()=>`<div class="skel-card"><div style="display:flex;gap:14px"><div class="skel-circle skeleton"></div><div style="flex:1;display:flex;flex-direction:column;gap:8px"><div class="skel-line skeleton" style="width:60%"></div><div class="skel-line skeleton" style="width:40%"></div></div></div><div class="skel-line skeleton" style="width:80%"></div><div class="skel-line skeleton" style="width:55%"></div></div>`).join('');
+  setTimeout(()=>{
+    let lista=[...PROFS];
+    if(cat) lista=lista.filter(p=>p.cat===cat);
+    if(ordem==='proximidade') lista.sort((a,b)=>a.dist-b.dist);
+    else if(ordem==='avaliacao') lista.sort((a,b)=>b.av-a.av);
+    else if(ordem==='preco') lista.sort((a,b)=>a.preco-b.preco);
+    else lista.sort((a,b)=>(b.online?1:0)-(a.online?1:0));
+    const geo=geoAtivo?' próximos a <strong>Pinheiros, SP</strong>':'';
+    const catStr=cat?` em <strong>${cat}</strong>`:'';
+    document.getElementById('status-txt').innerHTML=`Mostrando <strong>${lista.length} profissional${lista.length!==1?'is':''}</strong>${catStr}${geo}`;
+    if(!lista.length){grid.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:48px 20px;color:var(--cinza-text)"><div style="font-size:40px;margin-bottom:12px">🔍</div><div style="font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--texto);margin-bottom:6px">Nenhum profissional encontrado</div><div>Tente outra categoria.</div></div>`;return;}
+    grid.innerHTML=lista.map(p=>`
+      <div class="prof-card" onclick="abrirPerfil('${p.id}')">
+        <div class="prof-card-top">
+          <div class="prof-avatar" style="background:${p.cor}">${p.ini}${p.online?'<div class="online-badge"></div>':''}</div>
+          <div class="prof-info">
+            <div class="verified-tag">✓ Verificado</div>
+            <div class="prof-name">${p.nome}</div>
+            <div class="prof-cat">${p.cat}</div>
+            <div class="prof-rating-row">
+              <div class="prof-stars">${'★'.repeat(Math.floor(p.av))}</div>
+              <div class="prof-rating-num">${p.av.toFixed(1)}</div>
+              <div class="prof-reviews">(${p.revs})</div>
+            </div>
+          </div>
+          <div class="prof-dist-badge">📍 ${p.distTxt}</div>
+        </div>
+        <div class="prof-card-mid">
+          <div class="prof-tags">
+            ${p.tags.map(t=>`<span class="prof-tag">${t}</span>`).join('')}
+            <span class="prof-tag" style="${p.online?'background:#EDFCF2;color:var(--sucesso)':'background:#FFF8E6;color:#B45309'}">${p.online?'🟢 Disponível':'🟡 Agenda livre'}</span>
+          </div>
+        </div>
+        <div class="prof-card-foot">
+          <div><div class="prof-price">R$ ${p.preco}/h</div><div class="prof-price-lbl">a partir de</div></div>
+          <button class="prof-card-btn" onclick="event.stopPropagation();abrirPerfil('${p.id}')">Ver perfil →</button>
+        </div>
+      </div>`).join('');
+  },550);
+}
+
+/* ═══ MODAL PERFIL ═══ */
+function abrirPerfil(id){
+  const p=PROFS.find(x=>x.id===id);if(!p)return;
+  document.getElementById('modal-body').innerHTML=`
+    <div class="modal-hdr">
+      <div class="modal-avatar" style="background:${p.cor}">${p.ini}${p.online?'<div class="modal-online"></div>':''}</div>
+      <div>
+        <div class="modal-name">${p.nome}</div>
+        <div class="modal-sub">${p.cat} · 📍 ${p.distTxt} de você</div>
+        <div class="modal-badges">
+          <span class="verified-tag">✓ Verificado</span>
+          <span style="display:inline-flex;align-items:center;gap:4px;background:${p.online?'#EDFCF2':'#FFF8E6'};color:${p.online?'var(--sucesso)':'#B45309'};font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:4px">${p.online?'🟢 Disponível agora':'🟡 Agenda disponível'}</span>
+        </div>
+      </div>
+    </div>
+    <div class="dist-box">📍 <div><strong>${p.distTxt} de distância</strong>${geoAtivo?' · A partir de Pinheiros, SP':''} · Atende sua região</div></div>
+    <div class="modal-stats">
+      <div class="mstat"><div class="mstat-num">${p.av.toFixed(1)}★</div><div class="mstat-lbl">Avaliação</div></div>
+      <div class="mstat"><div class="mstat-num">${p.revs}</div><div class="mstat-lbl">Avaliações</div></div>
+      <div class="mstat"><div class="mstat-num">R$${p.preco}</div><div class="mstat-lbl">A partir de /h</div></div>
+    </div>
+    <div style="background:var(--cinza-bg);border-radius:12px;padding:16px;margin-bottom:20px">
+      <div class="msec-title">👤 Sobre ${p.nome.split(' ')[0]}</div>
+      <p style="font-size:13.5px;color:var(--cinza-text);line-height:1.65">${p.bio}</p>
+    </div>
+    <div style="margin-bottom:20px">
+      <div class="msec-title">🛠️ Serviços oferecidos</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">${p.servicos.map(s=>`<span style="background:var(--azul-pale);color:var(--azul);font-size:12px;font-weight:600;padding:5px 12px;border-radius:100px">${s}</span>`).join('')}</div>
+    </div>
+    <div style="margin-bottom:20px">
+      <div class="msec-title">📸 Portfólio (RF01)</div>
+      <div class="port-grid">${p.port.map(item=>`<div class="port-item" style="background:${item.bg}"><div class="port-ph"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div class="port-lbl">${item.lbl}</div></div>`).join('')}</div>
+    </div>
+    <div>
+      <div class="msec-title">💬 Avaliações</div>
+      ${p.revList.map(r=>`<div class="rev-item"><div class="rev-top"><div class="rev-user"><div class="rev-av" style="background:${r.c}">${r.i}</div><div><div class="rev-name">${r.n}</div><div class="rev-date">${r.d}</div></div></div><div style="color:#F59E0B;font-size:14px">${stars(r.nota)}</div></div><div class="rev-txt">"${r.t}"</div></div>`).join('')}
+    </div>`;
+  document.getElementById('modal-foot').innerHTML=`
+    <div class="mfoot-price"><div class="mfoot-price-val">R$ ${p.preco}/h</div><div class="mfoot-price-lbl">a partir de · prazo em até 48h</div></div>
+    <button class="btn-outline" style="font-size:13px;padding:10px 18px" onclick="toast('Abrindo chat com ${p.nome.split(' ')[0]}...')">💬 Chat</button>
+    <button class="btn-laranja" style="padding:12px 22px" onclick="selecionarProf('${p.id}')">Solicitar Serviço →</button>`;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModalOutside(e){if(e.target===document.getElementById('modal'))closeModal()}
+function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow=''}
+
+/* ═══ SELECIONAR PROFISSIONAL → FLUXO ═══ */
+function selecionarProf(id){
+  const p=PROFS.find(x=>x.id===id);if(!p)return;
+  profSel=p;closeModal();
+  catsSel=[p.cat];
+  document.querySelectorAll('.cat-opt').forEach(o=>o.classList.remove('selected'));
+  const el=document.getElementById('opt-'+p.cat);if(el)el.classList.add('selected');
+  // Banner
+  document.getElementById('prof-banner').innerHTML=`
+    <div class="prof-banner">
+      <div class="pb-avatar" style="background:${p.cor}">${p.ini}</div>
+      <div><div class="pb-name">${p.nome}</div><div class="pb-sub">${p.cat} · 📍 ${p.distTxt} · ⭐ ${p.av}</div></div>
+      <div class="pb-badge">✓ Selecionado</div>
+      <button class="btn-trocar" onclick="trocarProf()">Trocar</button>
+    </div>`;
+  document.getElementById('form-sub').textContent=`UC02 · Enviando solicitação para ${p.nome.split(' ')[0]}`;
+  go('solicitar');
+  toast(`✓ ${p.nome.split(' ')[0]} selecionado! Preencha os detalhes abaixo.`);
+}
+function trocarProf(){profSel=null;document.getElementById('prof-banner').innerHTML='';document.getElementById('form-sub').textContent='UC02 · Preencha os detalhes para enviar ao profissional';go('buscar');toast('Selecione outro profissional.')}
+
+/* ═══ FORM ═══ */
+function toggleCat(c){
+  const el=document.getElementById('opt-'+c);if(!el)return;
+  const i=catsSel.indexOf(c);
+  if(i>=0){catsSel.splice(i,1);el.classList.remove('selected')}
+  else{catsSel.push(c);el.classList.add('selected')}
+  document.getElementById('err-cat').style.display='none';
+}
+function onDescricao(el){
+  const n=el.value.length,c=document.getElementById('char-cnt');
+  if(n>=20){c.className='char-counter ok';c.textContent=`✓ ${n} caracteres — Válido`;el.classList.remove('error');document.getElementById('err-desc').style.display='none'}
+  else{c.className=n>0?'char-counter warn':'char-counter';c.textContent=`${n} / mínimo 20 caracteres — FE01`}
+}
+function solicitarOrcamento(){
+  let ok=true;
+  if(!catsSel.length){document.getElementById('err-cat').style.display='block';ok=false}
+  const desc=document.getElementById('descricao');
+  if(desc.value.length<20){desc.classList.add('error');document.getElementById('err-desc').style.display='block';toast('⚠️ FE01: Descrição deve ter ao menos 20 caracteres.');return}
+  if(!ok)return;
+  idPedido='CF-2025-'+(Math.floor(Math.random()*9000)+1000);
+  const p=profSel,catStr=catsSel.join(', '),pres=document.getElementById('chk-pres').checked;
+  document.getElementById('chat-id').textContent='ID: '+idPedido;
+  document.getElementById('chat-av').textContent=p?p.ini:'P';
+  document.getElementById('chat-av').style.background=p?p.cor:'#2456A4';
+  document.getElementById('chat-name').textContent=p?p.nome:'Profissional';
+  document.getElementById('res-serv').textContent=catStr;
+  document.getElementById('res-prof').textContent=p?`${p.nome.split(' ')[0]} ★${p.av}`:'—';
+  document.getElementById('res-dist').textContent=p?p.distTxt:'—';
+  document.getElementById('res-pres').textContent=pres?'✓ Incluída':'Não solicitada';
+  const val=p?p.preco*4:350;
+  document.getElementById('res-val').textContent=`R$ ${val},00`;
+  document.getElementById('res-total').textContent=`R$ ${val},00`;
+  // Chat
+  const msgs=document.getElementById('chat-msgs');msgs.innerHTML='';
+  const addMsg=(tipo,sender,html)=>{const d=document.createElement('div');d.className='msg '+tipo;d.innerHTML=tipo==='prestador'?`<div class="msg-sender">${sender}</div><div class="msg-bubble">${html}</div><div class="msg-time">Agora mesmo</div>`:`<div class="msg-bubble">${html}</div><div class="msg-time">Agora mesmo</div>`;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight};
+  const fn=p?p.nome.split(' ')[0]:'Profissional';
+  addMsg('client','',`Olá ${fn}! Preciso de <strong>${catStr}</strong>.${pres?' Gostaria de incluir a <strong>Avaliação Presencial (UC02.1)</strong>.':''}`);
+  setTimeout(()=>{addMsg('prestador',fn,`Olá! Recebi sua solicitação.${pres?' Ótima escolha solicitar a vistoria presencial. ':' '}Com base nos detalhes, aqui está minha proposta:`);
+    setTimeout(()=>{
+      const o=document.createElement('div');o.className='msg prestador';
+      o.innerHTML=`<div class="msg-sender">${fn}</div><div class="oferta-card"><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cinza-text);margin-bottom:6px">Oferta Formal — UC03</div><div class="oferta-val">R$ ${val},00</div><div class="oferta-prazo">⏱ Prazo: 2 dias úteis · Material incluso</div><div class="oferta-acts"><button class="btn-aceitar" onclick="aceitarOrcamento()">✓ Aceitar e Pagar</button><button class="btn-neg">💬 Negociar</button></div></div><div class="msg-time">Agora mesmo</div>`;
+      msgs.appendChild(o);msgs.scrollTop=msgs.scrollHeight;
+    },1200);
+  },800);
+  irParaTela('chat');toast(`✓ Solicitação enviada para ${fn}! ${idPedido}`);
+}
+function enviarMsg(){
+  const inp=document.getElementById('chat-inp'),txt=inp.value.trim();if(!txt)return;
+  const msgs=document.getElementById('chat-msgs');
+  const m=document.createElement('div');m.className='msg client';m.innerHTML=`<div class="msg-bubble">${txt}</div><div class="msg-time">Agora mesmo</div>`;
+  msgs.appendChild(m);msgs.scrollTop=msgs.scrollHeight;inp.value='';
+  const fn=profSel?profSel.nome.split(' ')[0]:'Profissional';
+  setTimeout(()=>{const r=document.createElement('div');r.className='msg prestador';r.innerHTML=`<div class="msg-sender">${fn}</div><div class="msg-bubble">Entendido! Posso confirmar que o serviço ficará dentro do prazo. Mais alguma dúvida?</div><div class="msg-time">Agora mesmo</div>`;msgs.appendChild(r);msgs.scrollTop=msgs.scrollHeight;},1200);
+}
+function aceitarOrcamento(){irParaTela('pagamento');toast('Proposta aceita! Prosseguindo para pagamento...')}
+function selPag(m){document.getElementById('met-pix').classList.toggle('selected',m==='pix');document.getElementById('met-cartao').classList.toggle('selected',m==='cartao');document.getElementById('pix-box').classList.toggle('active',m==='pix');document.getElementById('card-form').classList.toggle('active',m==='cartao')}
+function processarPagamento(){document.getElementById('success-id').textContent='ID_Pedido: '+idPedido;irParaTela('sucesso');toast('🎉 Pagamento confirmado! Profissional notificado.',4000)}
+function irParaTela(nome){
+  const map={solicitar:1,chat:2,pagamento:3,sucesso:4};
+  document.querySelectorAll('.flow-screen').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tela-'+nome).classList.add('active');
+  for(let i=1;i<=4;i++){const s=document.getElementById('step-'+i);s.classList.remove('active','done');if(i<map[nome])s.classList.add('done');else if(i===map[nome])s.classList.add('active')}
+  go('solicitar');
+}
+function reiniciar(){profSel=null;catsSel=[];document.querySelectorAll('.cat-opt').forEach(o=>o.classList.remove('selected'));['descricao','endereco'].forEach(id=>document.getElementById(id).value='');document.getElementById('chk-pres').checked=false;document.getElementById('prof-banner').innerHTML='';document.getElementById('char-cnt').className='char-counter';document.getElementById('char-cnt').textContent='0 / mínimo 20 caracteres — FE01';document.getElementById('form-sub').textContent='UC02 · Preencha os detalhes para enviar ao profissional';irParaTela('solicitar')}
+
+/* ═══ INIT ═══ */
+renderProfs();
+</script>
+</body>
+</html>
